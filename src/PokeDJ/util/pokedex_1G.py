@@ -15,5 +15,3 @@ def pokedex_1G():
         }
         
     return vPokedex_1G
-
-pokedex_1G()
