@@ -4,8 +4,8 @@ import pokepy
 from PokeDJ.util.pokedex import pokedex
 
 def index(request):
-    vPokedex = pokedex(1, 151)
+    vPokedex_1G = pokedex(1, 151)
     vContext = {
-        "pokedex":vPokedex,
+        "pokedex_1G":vPokedex_1G,
     }
     return render(request, "pokedex_home.html", context=vContext)
