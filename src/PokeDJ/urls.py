@@ -19,4 +19,5 @@ import PokeDJ.views as views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('/gen<int:generation>', views.view_gen, name='view_gen'),
 ]
