@@ -1,10 +1,10 @@
 import pokepy
 
-def pokedex_1G():
+def pokedex(iStart, iEnd):
     vClient = pokepy.V2Client()
     vPokedex_1G = {}
     
-    for index in range(1, 152):
+    for index in range(iStart, iEnd + 1):
         vPokemon = vClient.get_pokemon(index)[0]
         vPokedex_1G[vPokemon.name] = {
             "id": vPokemon.id,
