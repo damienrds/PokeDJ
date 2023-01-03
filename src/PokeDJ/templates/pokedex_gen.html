@@ -14,39 +14,36 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #ef9fa6;">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Gen 1 (Kanto)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 1 %}">Gen 1 (Kanto)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gen 2 (Jotho)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 2 %}">Gen 2 (Jotho)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gen 3 (Hoenne)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 3 %}">Gen 3 (Hoenne)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gen 4 (Sinnoh)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 4 %}">Gen 4 (Sinnoh)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gen 5 (Unova)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 5 %}">Gen 5 (Unova)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gen 6 (Kalos)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 6 %}">Gen 6 (Kalos)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gen 7 (Alola)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 7 %}">Gen 7 (Alola)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gen 8 (Galar)</a>
+                    <a class="nav-link" href="{% url 'view_gen' 8 %}">Gen 8 (Galar)</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -58,13 +55,13 @@
 
     <h1 id="gen1">Generation {{ generation }} ({{ region }})</h1>
     {% for key, value in pokedex.items %}
-    <a href={{ value.name }}>
+    <a href="{% url 'poke_info' value.name %}">
         <div class="media position-relative">
-            <img src={{ value.sprite }} class="mr-3">
+            <img src="{{ value.sprite }}" class="mr-3">
             <div class="media-body">
                 <h5 class="mt-0">{{ value.name }}</h5>
                 {% for type in value.type %}
-                <img src="/static/img/type/{{type}}.png" class="mr-1" width="5%"> {% endfor %}
+                <img src="/static/img/type/{{type}}.png" class="mr-1" width="5%" /> {% endfor %}
             </div>
         </div>
     </a>

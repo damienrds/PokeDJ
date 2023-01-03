@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import pokepy
 from PokeDJ.util.pokedex import pokedex
+from PokeDJ.util.get_pokemon_info import get_pokemon_info
 
 def index(request):
     vPokedex_1G = pokedex(1, 151)
@@ -46,4 +47,12 @@ def view_gen(request, generation):
         "region":vRegion,
     }
     return render(request, "pokedex_gen.html", context=vContext)
+
+def poke_info(request, generation, pokemon_name):
+    vPokemon = get_pokemon_info(pokemon_name)
+    vContext = {
+        "pokemon":vPokemon,
+    }
+    
+    return render(request, "pokemon_info.html", context=vContext)
 
