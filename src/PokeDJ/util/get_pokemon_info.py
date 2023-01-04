@@ -20,7 +20,10 @@ def get_pokemon_info(iPokemonName):
             "AttaqueSpe": vPokemon.stats[3].base_stat,
             "DefenseSpe": vPokemon.stats[4].base_stat,
             "Vitesse": vPokemon.stats[5].base_stat
-        }
+        },
+        "moves": [vPokemon.moves[index_move].move.name for index_move in range(len(vPokemon.moves))],
     }
-        
+    # TODO: Plus de détails sur les attaques
     return vPokemonInfo
+
+get_pokemon_info("pikachu")
