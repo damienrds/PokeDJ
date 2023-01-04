@@ -21,9 +21,22 @@ def get_pokemon_info(iPokemonName):
             "DefenseSpe": vPokemon.stats[4].base_stat,
             "Vitesse": vPokemon.stats[5].base_stat
         },
-        "moves": [vPokemon.moves[index_move].move.name for index_move in range(len(vPokemon.moves))],
+        "moves": [],
     }
+    
+    # -- Fill movepool --------------------------------------------------------
+    for index_move in range(len(vPokemon.moves)):
+        vMove = vClient.get_move(vPokemon.moves[index_move].move.url).split("/")[-2][0]
+        vPokemonInfo["moves"].append({
+            "name": vMove.name,
+            "type": vMove.type.name,
+            "power": vMove.power,
+            "accuracy": vMove.accuracy,
+            "pp": vMove.pp,
+            "damage_class": vMove.damage_class.name,
+        })
+    
     # TODO: Plus de détails sur les attaques
     return vPokemonInfo
-
+    
 get_pokemon_info("pikachu")
