@@ -53,20 +53,42 @@
         </div>
     </nav>
 
-    <h1 id="gen1">Generation {{ generation }} ({{ region }})</h1>
-    {% for key, value in pokedex.items %}
-    <div class="media position-relative">
-        <img src="{{ value.sprite }}" class="mr-3">
-        <div class="media-body">
-            <a href="{% url 'poke_info' value.name %}">
-                <h5 class="mt-0">{{ value.name|title }}</h5>
-            </a>
-            {% for type in value.type %}
-            <img src="/static/img/type/{{type}}.png" class="mr-1" width="3%" /> {% endfor %}
-        </div>
-    </div>
-    {% endfor %}
-
+    <h1>Generation {{ generation }} ({{ region }})</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">PV</th>
+                <th scope="col">Attaque</th>
+                <th scope="col">Défense</th>
+                <th scope="col">Attaque Spé.</th>
+                <th scope="col">Défense Spé.</th>
+                <th scope="col">Vitesse</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in pokedex.items %}
+            <tr>
+                <td><img src="{{ value.sprite }}" class="mr-3"></td>
+                <td>
+                    <a href="{% url 'poke_info' value.name %}">
+                        <h5 class="mt-0">{{ value.name|title }}</h5>
+                    </a>
+                </td>
+                <td>{% for type in value.type %}
+                    <img src="/static/img/type/{{type}}.png" class="mr-1" width="20%" /> {% endfor %}</td>
+                <td>{{ value.stats.PV }}</td>
+                <td>{{ value.stats.Attaque }}</td>
+                <td>{{ value.stats.Defense }}</td>
+                <td>{{ value.stats.AttaqueSpe }}</td>
+                <td>{{ value.stats.DefenseSpe }}</td>
+                <td>{{ value.stats.Vitesse }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
