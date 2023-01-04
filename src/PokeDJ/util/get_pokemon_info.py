@@ -11,8 +11,8 @@ def get_pokemon_info(iPokemonName):
         "type": [vPokemon.types[index_type].type.name for index_type in range(len(vPokemon.types))],
         "ability": [vPokemon.abilities[index_ability].ability.name for index_ability in range(len(vPokemon.abilities))],
         "sprite": vPokemon.sprites.front_default,
-        "height": vPokemon.height,
-        "weight": vPokemon.weight,
+        "height": int(vPokemon.height)/10,
+        "weight": int(vPokemon.weight)/10,
         "stats": {
             "PV": vPokemon.stats[0].base_stat,
             "Attaque": vPokemon.stats[1].base_stat,
@@ -26,7 +26,7 @@ def get_pokemon_info(iPokemonName):
     
     # -- Fill movepool --------------------------------------------------------
     for index_move in range(len(vPokemon.moves)):
-        vMove = vClient.get_move(vPokemon.moves[index_move].move.url).split("/")[-2][0]
+        vMove = vClient.get_move(vPokemon.moves[index_move].move.url.split("/")[-2])[0]
         vPokemonInfo["moves"].append({
             "name": vMove.name,
             "type": vMove.type.name,
@@ -36,7 +36,4 @@ def get_pokemon_info(iPokemonName):
             "damage_class": vMove.damage_class.name,
         })
     
-    # TODO: Plus de détails sur les attaques
     return vPokemonInfo
-    
-get_pokemon_info("pikachu")

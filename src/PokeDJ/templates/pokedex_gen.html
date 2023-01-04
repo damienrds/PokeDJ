@@ -58,13 +58,13 @@
     <div class="media position-relative">
         <img src="{{ value.sprite }}" class="mr-3">
         <div class="media-body">
-                <a href="{% url 'poke_info' value.name %}">
-                    <h5 class="mt-0">{{ value.name }}</h5>
-                </a>
-                {% for type in value.type %}
-                <img src="/static/img/type/{{type}}.png" class="mr-1" width="5%" /> {% endfor %}
-            </div>
+            <a href="{% url 'poke_info' value.name %}">
+                <h5 class="mt-0">{{ value.name|title }}</h5>
+            </a>
+            {% for type in value.type %}
+            <img src="/static/img/type/{{type}}.png" class="mr-1" width="3%" /> {% endfor %}
         </div>
+    </div>
     {% endfor %}
 
 
