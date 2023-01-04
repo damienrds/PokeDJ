@@ -56,30 +56,35 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">{{pokedex.name}}</h1>
+                <h1 class="text-center">{{pokemon.name|title}}</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <img src="{{pokedex.image}}" alt="{{pokedex.name}}" class="img-fluid">
+                <img src="{{pokemon.sprite}}" alt="{{pokemon.name}}" class="img-fluid" width="50%">
             </div>
             <div class="col-9">
                 <h2>Informations</h2>
-                <p><strong>Height:</strong> {{pokedex.height}}m</p>
-                <p><strong>Weight:</strong> {{pokedex.weight}}kg</p>
+                <p><strong>Height:</strong> {{pokemon.height}}m</p>
+                <p><strong>Weight:</strong> {{pokemon.weight}}kg</p>
                 <p>
-                    <strong>Types:</strong> {% for type in value.type %}
-                    <img src="/static/img/type/{{type}}.png" class="mr-1" width="5%" /> {% endfor %}
+                    <strong>Types:</strong> 
+                    {% for type in pokemon.type %}
+                        <img src="/static/img/type/{{type}}.png" class="mr-1" width="10%" /> 
+                    {% endfor %}
                 </p>
-                <p><strong>Abilities:</strong> {% for type in value.type %} {{type}} {% endfor %}</p>
+                <p><strong>Abilities:</strong> 
+                    {% for ability in pokemon.ability %} 
+                        <p>{{ability|title}}</p> 
+                    {% endfor %}</p>
                 <p><strong>Base stats:</strong></p>
                 <ul>
-                    <li>HP: {{pokedex.PV}}</li>
-                    <li>Attack: {{pokedex.Attaque}}</li>
-                    <li>Defense: {{pokedex.Defense}}</li>
-                    <li>Sp. Attack: {{pokedex.AttaqueSpe}}</li>
-                    <li>Sp. Defense: {{pokedex.DefenseSpe}}</li>
-                    <li>Speed: {{pokedex.Vitesse}}</li>
+                    <li>HP: {{pokemon.stats.PV}}</li>
+                    <li>Attack: {{pokemon.stats.Attaque}}</li>
+                    <li>Defense: {{pokemon.stats.Defense}}</li>
+                    <li>Sp. Attack: {{pokemon.stats.AttaqueSpe}}</li>
+                    <li>Sp. Defense: {{pokemon.stats.DefenseSpe}}</li>
+                    <li>Speed: {{pokemon.stats.Vitesse}}</li>
                 </ul>
             </div>
         </div>

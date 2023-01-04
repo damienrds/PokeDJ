@@ -20,5 +20,5 @@ import PokeDJ.views as views
 urlpatterns = [
     path('', views.index, name='index'),
     path('gen<int:generation>/', views.view_gen, name='view_gen'),
-    path('gen<int:generation>/<str:pokemon_name>/', views.poke_info, name='poke_info'),
+    path('<str:pokemon_name>/', views.poke_info, name='poke_info'),
 ]

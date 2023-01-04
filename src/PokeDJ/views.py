@@ -48,7 +48,7 @@ def view_gen(request, generation):
     }
     return render(request, "pokedex_gen.html", context=vContext)
 
-def poke_info(request, generation, pokemon_name):
+def poke_info(request, pokemon_name):
     vPokemon = get_pokemon_info(pokemon_name)
     vContext = {
         "pokemon":vPokemon,

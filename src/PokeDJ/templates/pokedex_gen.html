@@ -55,16 +55,16 @@
 
     <h1 id="gen1">Generation {{ generation }} ({{ region }})</h1>
     {% for key, value in pokedex.items %}
-    <a href="{% url 'poke_info' value.name %}">
-        <div class="media position-relative">
-            <img src="{{ value.sprite }}" class="mr-3">
-            <div class="media-body">
-                <h5 class="mt-0">{{ value.name }}</h5>
+    <div class="media position-relative">
+        <img src="{{ value.sprite }}" class="mr-3">
+        <div class="media-body">
+                <a href="{% url 'poke_info' value.name %}">
+                    <h5 class="mt-0">{{ value.name }}</h5>
+                </a>
                 {% for type in value.type %}
                 <img src="/static/img/type/{{type}}.png" class="mr-1" width="5%" /> {% endfor %}
             </div>
         </div>
-    </a>
     {% endfor %}
 
 

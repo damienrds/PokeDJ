@@ -5,7 +5,7 @@ def get_pokemon_info(iPokemonName):
     vPokemonInfo = {}
     
     vPokemon = vClient.get_pokemon(iPokemonName)[0]
-    vPokemonInfo[vPokemon.name] = {
+    vPokemonInfo = {
         "id": vPokemon.id,
         "name": vPokemon.name,
         "type": [vPokemon.types[index_type].type.name for index_type in range(len(vPokemon.types))],
